@@ -1,0 +1,63 @@
+mainmenu "lepnina KConfig"
+
+config NOTIMPL
+	bool "Show features not implemented yet"
+
+config TESTS
+	bool "Unit tests"
+	default y
+
+config TESTS_FS
+	bool "Mock `fs`"
+	depends on TESTS
+	depends on NOTIMPL
+
+config TESTS_AXIOS
+	bool "Mock `axios`"
+	depends on TESTS
+	depends on NOTIMPL
+
+config TS
+	bool "TypeScript"
+
+config CMDLINE_PARSER
+	bool "Command line parser"
+	depends on NOTIMPL
+
+config STANDARDJS
+	bool "StandardJS linting"
+	depends on NOTIMPL
+
+config SERVERLESSCOM
+	bool "Serverless Framework"
+	depends on NOTIMPL
+
+config MIDDY
+	bool "Middy Middleware"
+	depends on SERVERLESSCOM
+	depends on NOTIMPL
+
+config OPENAPI
+	bool "OpenAPI specification for HTTP endpoints"
+	depends on SERVERLESSCOM
+	depends on NOTIMPL
+
+config OPENAPI_AJV
+	bool "OpenAPI RequestBody Schema Validation"
+	depends on OPENAPI	
+	depends on NOTIMPL
+
+config SERVERLESSCOM_OPENAPI_BODY
+	bool "Use AWS Body property"
+	depends on OPENAPI
+	depends on SERVERLESSCOM	
+	depends on NOTIMPL
+
+config SERVERLESSCOM_OFFLINE
+	bool "Use `serverless-offline`"
+	depends on SERVERLESSCOM	
+	depends on NOTIMPL
+
+config WEBSTORM
+	bool "WebStorm project"
+	depends on NOTIMPL

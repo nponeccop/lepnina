@@ -1,0 +1,17 @@
+<%
+const tsConfig = {
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2020",
+    "sourceMap": true,
+    "lib": [
+      "esnext"
+    ],
+    "moduleResolution": "node",
+    "incremental": true,
+    "strictNullChecks": true,
+    "outDir": "dist"
+  }
+}
+	
+%><%- JSON.stringify(tsConfig, null, 2) %> 

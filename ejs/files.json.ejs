@@ -1,0 +1,18 @@
+<%
+
+const addIf = (cond, deps) => cond
+	? deps
+	: []
+
+const files = [
+	"package.json",
+	...(addIf(CONFIG_TESTS, ["jest.config.json"])),
+	...(addIf(CONFIG_TS, ["tsconfig.json"])), 
+	...(addIf(CONFIG_TESTS && !CONFIG_TS, ["__tests__/example.js"])),
+	...(addIf(CONFIG_TESTS && CONFIG_TS, ["__tests__/example.ts"]))
+]
+
+%><%- JSON.stringify({
+	files
+	
+}, null, 2) %>

@@ -1,0 +1,4 @@
+.config*
+*.exe
+node_modules/
+run.cmd

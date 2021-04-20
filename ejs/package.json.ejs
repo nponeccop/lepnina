@@ -1,0 +1,23 @@
+<% 
+const addDepIf = (cond, deps) => cond
+	? Object.fromEntries(deps.split(" ").map(dep => [ dep, "*"]))
+	: {} 
+
+const devDependencies = {
+	...(addDepIf(CONFIG_TESTS, "jest")),
+	...(addDepIf(CONFIG_TS, "typescript @types/node")), 
+	...(addDepIf(CONFIG_TESTS && CONFIG_TS, "ts-jest @types/jest"))
+}
+
+const addScriptsIf = (cond, deps) => cond
+	? deps
+	: {} 
+
+const scripts = {
+	...(addScriptsIf(CONFIG_TS, { build: "tsc"}))
+	...(addScriptsIf(CONFIG_TESTS, { build: "tsc"}))
+
+}
+
+
+%><%- JSON.stringify({ devDependencies, scripts }, null, 2) %>
