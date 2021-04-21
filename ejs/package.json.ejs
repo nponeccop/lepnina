@@ -14,8 +14,8 @@ const addScriptsIf = (cond, deps) => cond
 	: {} 
 
 const scripts = {
-	...(addScriptsIf(CONFIG_TS, { build: "tsc"}))
-	...(addScriptsIf(CONFIG_TESTS, { build: "tsc"}))
+	...(addScriptsIf(CONFIG_TS, { build: "tsc" })),
+	...(addScriptsIf(CONFIG_TESTS, { test: "jest" }))
 
 }
 
