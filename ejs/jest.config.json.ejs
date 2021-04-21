@@ -1,0 +1,9 @@
+<%
+const addIf = (cond, deps) => cond ? deps : {} 
+
+const config = {
+  testEnvironment: "node",
+  ...(addIf(CONFIG_TS, { preset: "ts-jest" }))
+}
+	
+%><%- JSON.stringify(config, null, 2) %> 
