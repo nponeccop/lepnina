@@ -9,7 +9,9 @@ const files = [
 	...(addIf(CONFIG_TESTS, ["jest.config.json"])),
 	...(addIf(CONFIG_TS, ["tsconfig.json"])), 
 	...(addIf(CONFIG_TESTS && !CONFIG_TS, ["__tests__/example.js"])),
-	...(addIf(CONFIG_TESTS && CONFIG_TS, ["__tests__/example.ts"]))
+	...(addIf(CONFIG_TESTS && CONFIG_TS, ["__tests__/example.ts"])),
+	...(addIf(CONFIG_CMDLINE && !CONFIG_TS, ["mytool.js"])),
+	...(addIf(CONFIG_CMDLINE && CONFIG_TS, ["mytool.ts"]))
 ]
 
 %><%- JSON.stringify({

@@ -16,8 +16,21 @@ const addScriptsIf = (cond, deps) => cond
 const scripts = {
 	...(addScriptsIf(CONFIG_TS, { build: "tsc" })),
 	...(addScriptsIf(CONFIG_TESTS, { test: "jest" }))
-
 }
 
+const bin = {
+	...(addScriptsIf(CONFIG_CMDLINE, { mytool: "mytool.js" })),
+}
 
-%><%- JSON.stringify({ devDependencies, scripts }, null, 2) %>
+const isEmptyObject = obj => Object.keys(obj).length === 0
+
+const avoidEmptyObjects = obj => {
+	for (const prop in obj) {
+	 	if (isEmptyObject(obj[prop])) {
+			delete obj[prop]
+		}
+	}
+	return obj
+}
+
+%><%- JSON.stringify(avoidEmptyObjects({ devDependencies, scripts, bin }), null, 2) %>

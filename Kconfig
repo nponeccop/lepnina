@@ -20,6 +20,9 @@ config TESTS_AXIOS
 config TS
 	bool "TypeScript"
 
+config CMDLINE
+	bool "Command line tool"
+
 config CMDLINE_PARSER
 	bool "Command line parser"
 	depends on NOTIMPL
